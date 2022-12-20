@@ -1,0 +1,35 @@
+{
+  "name": "codeforces-sdk",
+  "plan": "web",
+  "version": "0.0.1",
+  "description": "SDK for codeforces.com",
+  "main": "./out/esm/src/index.js",
+  "exports": {
+    "import": "./out/esm/src/index.js",
+    "require": "./out/cjs/src/index.js"
+  },
+  "engines": {
+    "node": ">14.0.0"
+  },
+  "dependencies": {
+    "bottleneck": "^2.19.5",
+    "isomorphic-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.17",
+    "typescript": "^4.9.3"
+  },
+  "optionalDependencies": {
+    "crypto": "^1.0.1",
+    "debug": "^4.3.4",
+    "source-map-support": "^0.5.21"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "Igorjan94",
+  "license": "PRIVATE"
+}
