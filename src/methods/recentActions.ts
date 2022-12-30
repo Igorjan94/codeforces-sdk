@@ -1,12 +1,12 @@
 import { RecentAction } from '../types/recent-action'
 import { apiRequest } from '../utils/api-request'
 
-export type RecentActionListOptions = {
+export type ListOptions = {
     count: number
 }
 
-export const list = async (options: RecentActionListOptions) => {
-    return apiRequest<Array<RecentAction>>('recentActions', {maxCount: options.count})
+export const list = async (options: ListOptions) => {
+    return apiRequest(RecentAction, true, 'recentActions', {maxCount: options.count})
 }
 
 

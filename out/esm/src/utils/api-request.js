@@ -1,7 +1,7 @@
 import fs from 'fs';
-import bottleneck from 'bottleneck';
 import { httpRequest } from './http-request';
 const debug = initDebug('index');
+import bottleneck from 'bottleneck';
 let API = 'https://codeforces.com/api/';
 let API_INTERVAL = 2000;
 const limiter = new bottleneck({
@@ -19,7 +19,7 @@ let randomString;
 const loadCrypto = () => {
     try {
         debug('Loading crypto...');
-        const crypto = require('crypto');
+        const crypto = require('node:crypto');
         debug('Crypto found');
         getHash = (s) => {
             const hash = crypto.createHash('sha512');
@@ -44,7 +44,7 @@ export const readDefaultOptionsFromFile = (filename) => {
     setDefaultOptions(options);
     debug('Config is loaded');
 };
-export const apiRequest = async (method, options = {}, extra = { ensureAuth: false }) => {
+export const rawApiRequest = async (method, options = {}, extra = { ensureAuth: false }) => {
     const h = defaultOptions;
     const reqOptions = { ...options };
     if ('lang' in defaultOptions)
@@ -68,15 +68,23 @@ export const apiRequest = async (method, options = {}, extra = { ensureAuth: fal
         const rand = randomString(6);
         reqOptions.time = time;
         reqOptions.apiKey = defaultOptions.key;
-        const searchParams = new URLSearchParams(reqOptions);
-        searchParams.sort();
-        const hash = `${rand}/${method}?${searchParams.toString()}#${defaultOptions.secret}`;
+        const searchParams = Object.entries(reqOptions).sort((a, b) => a < b ? -1 : a > b ? 1 : 0).map(([k, v]) => `${k}=${v}`).join('&');
+        const hash = `${rand}/${method}?${searchParams}#${defaultOptions.secret}`;
+        console.log(hash);
         reqOptions.apiSig = `${rand}${getHash(hash)}`;
         debug('Request is authorized');
     }
     else if (extra.ensureAuth) {
         throw new Error(`Method ${method} needs authorization. Use 'setDefaultOptions({key, secret})' or 'readDefaultOptionsFromFile(filename)'`);
     }
-    return await rateLimitedHttpRequest(method, reqOptions);
+    const res = await rateLimitedHttpRequest(method, reqOptions);
+    return res;
+};
+export const apiRequest = async (type, isArray, method, options = {}, extra = { ensureAuth: false }) => {
+    const res = await rawApiRequest(method, options, extra);
+    if (Array.isArray(res) && isArray)
+        return res.map(one => new type(one));
+    else
+        return new type(res);
 };
 //# sourceMappingURL=api-request.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"problem-result.js","sourceRoot":"","sources":["../../../../src/types/problem-result.ts"],"names":[],"mappings":";;;AAEA,IAAY,iBAGX;AAHD,WAAY,iBAAiB;IACzB,gDAA2B,CAAA;IAC3B,oCAAe,CAAA;AACnB,CAAC,EAHW,iBAAiB,GAAjB,yBAAiB,KAAjB,yBAAiB,QAG5B"}
+{"version":3,"file":"problem-result.js","sourceRoot":"","sources":["../../../../src/types/problem-result.ts"],"names":[],"mappings":";;;AAAA,qCAAkD;AAElD,IAAY,iBAGX;AAHD,WAAY,iBAAiB;IACzB,gDAA2B,CAAA;IAC3B,oCAAe,CAAA;AACnB,CAAC,EAHW,iBAAiB,GAAjB,yBAAiB,KAAjB,yBAAiB,QAG5B;AAED,MAAa,aAAc,SAAQ,yBAA+B;CAMjE;AAND,sCAMC"}

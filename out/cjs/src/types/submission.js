@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SubmissionTestset = exports.SubmissionVerdict = void 0;
+exports.Submission = exports.SubmissionTestset = exports.SubmissionVerdict = void 0;
+const common_1 = require("./common");
+const contest_1 = require("./contest");
+const party_1 = require("./party");
+const problem_1 = require("./problem");
 var SubmissionVerdict;
 (function (SubmissionVerdict) {
     SubmissionVerdict["FAILED"] = "FAILED";
@@ -38,4 +42,16 @@ var SubmissionTestset;
     SubmissionTestset["TESTS9"] = "TESTS9";
     SubmissionTestset["TESTS10"] = "TESTS10";
 })(SubmissionTestset = exports.SubmissionTestset || (exports.SubmissionTestset = {}));
+class Submission extends common_1.CodeforcesObject {
+    constructor(s) {
+        super(s);
+        this.problem = new problem_1.Problem(this.problem);
+        this.author = new party_1.Party(this.author);
+    }
+    getLink(text) {
+        const contestId = this.contestId ?? 0;
+        return `<a href='${common_1.CODEFORCES_URL}${contest_1.Contest.getGymType(contestId)}/${contestId}/submission/${this.id}'>${text ?? this.id}</a>`;
+    }
+}
+exports.Submission = Submission;
 //# sourceMappingURL=submission.js.map

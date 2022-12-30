@@ -1,4 +1,4 @@
-import { Float } from './common';
+import { CodeforcesObject, Float } from './common';
 import { ContestId } from './contest';
 import { Party } from './party';
 import { Problem } from './problem';
@@ -40,7 +40,7 @@ export declare enum SubmissionTestset {
 export type SubmissionId = number & {
     __unique: 'SubmissionId';
 };
-export type Submission = {
+export declare class Submission extends CodeforcesObject<Submission> {
     id: SubmissionId;
     contestId?: ContestId;
     creationTimeSeconds: number;
@@ -54,4 +54,6 @@ export type Submission = {
     timeConsumedMillis: number;
     memoryConsumedBytes: number;
     points?: Float;
-};
+    constructor(s: Submission);
+    getLink(text?: string): string;
+}

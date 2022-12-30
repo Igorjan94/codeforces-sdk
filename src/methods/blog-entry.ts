@@ -3,21 +3,21 @@ import { Comment } from '../types/comment'
 import { apiRequest } from '../utils/api-request'
 
 
-export type BlogEntryCommentsOptions = {
+export type CommentsOptions = {
     blogEntryId: BlogEntryId
 }
 
-export const comments = async (options: BlogEntryCommentsOptions) => {
-    return apiRequest<Array<Comment>>('blogEntry.comments', options)
+export const comments = async (options: CommentsOptions) => {
+    return apiRequest(Comment, true, 'blogEntry.comments', options)
 }
 
 
-export type BlogEntryViewOptions = {
+export type ViewOptions = {
     blogEntryId: BlogEntryId
 }
 
-export const view = async (options: BlogEntryViewOptions) => {
-    return apiRequest<BlogEntry>('blogEntry.view', options)
+export const view = async (options: ViewOptions) => {
+    return apiRequest(BlogEntry, false, 'blogEntry.view', options)
 }
 
 

@@ -1,22 +1,21 @@
 import { Contest, ContestId } from '../types/contest';
 import { Hack } from '../types/hack';
-import { Problem } from '../types/problem';
-import { RanklistRow } from '../types/ranklist-row';
 import { RatingChange } from '../types/rating-change';
+import { Standings } from '../types/standings';
 import { Submission } from '../types/submission';
-export type ContestHacksOptions = {
+export type HacksOptions = {
     contestId: ContestId;
 };
-export declare const hacks: (options: ContestHacksOptions) => Promise<Hack[]>;
-export type ContestListOptions = {
+export declare const hacks: (options: HacksOptions) => Promise<Hack[]>;
+export type ListOptions = {
     gym?: boolean;
 };
-export declare const list: (options?: ContestListOptions) => Promise<Contest[]>;
-export type ContestRatingChangesOptions = {
+export declare const list: (options?: ListOptions) => Promise<Contest[]>;
+export type RatingChangesOptions = {
     contestId: ContestId;
 };
-export declare const ratingChanges: (options: ContestRatingChangesOptions) => Promise<RatingChange[]>;
-export type ContestStandingsOptions = {
+export declare const ratingChanges: (options: RatingChangesOptions) => Promise<RatingChange[]>;
+export type StandingsOptions = {
     contestId: ContestId;
     from: number;
     count?: number;
@@ -24,15 +23,11 @@ export type ContestStandingsOptions = {
     room?: number;
     showUnofficial?: boolean;
 };
-export declare const standings: (options: ContestStandingsOptions) => Promise<{
-    contest: Contest;
-    problems: Array<Problem>;
-    rows: Array<RanklistRow>;
-}>;
-export type ContestStatusOptions = {
+export declare const standings: (options: StandingsOptions) => Promise<Standings>;
+export type StatusOptions = {
     contestId: ContestId;
     handle?: string;
     from?: number;
     count?: number;
 };
-export declare const status: (options: ContestStatusOptions) => Promise<Submission[]>;
+export declare const status: (options: StatusOptions) => Promise<Submission[]>;

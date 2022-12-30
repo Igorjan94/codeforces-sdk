@@ -1,8 +1,9 @@
-import { AvailableLanguages, Handle } from './common';
+import { BlogEntryId } from './blog-entry';
+import { AvailableLanguages, CodeforcesObject, Handle } from './common';
 export type CommentId = number & {
     __unique: 'CommentId';
 };
-export type Comment = {
+export declare class Comment extends CodeforcesObject<Comment> {
     id: CommentId;
     creationTimeSeconds: number;
     commentatorHandle: Handle;
@@ -10,4 +11,5 @@ export type Comment = {
     text: string;
     parentCommentId?: CommentId;
     rating: number;
-};
+    getLink(blogEntryId: BlogEntryId, text?: string): string;
+}

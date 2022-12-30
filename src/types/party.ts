@@ -1,3 +1,4 @@
+import { CodeforcesObject } from './common'
 import { ContestId } from './contest'
 import { Member } from './member'
 
@@ -9,7 +10,7 @@ export enum ParticipantType {
 	OUT_OF_COMPETITION = 'OUT_OF_COMPETITION'
 }
 
-export type Party = {
+export class Party extends CodeforcesObject<Party> {
     contestId?: ContestId
     members: Array<Member>
     participantType: ParticipantType
@@ -18,5 +19,10 @@ export type Party = {
     ghost: boolean
     room?: number
     startTimeSeconds?: number
+
+    constructor(p: Party) {
+        super(p)
+        this.members = this.members.map(member => new Member(member))
+    }
 }
 

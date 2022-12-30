@@ -1,3 +1,5 @@
+import { Problemset } from '../types/problemset';
+import { Submission } from '../types/submission';
 import { apiRequest } from '../utils/api-request';
 export const problems = async (options = {}) => {
     if ('tags' in options) {
@@ -6,9 +8,9 @@ export const problems = async (options = {}) => {
         if (options.tags)
             options.tags = options.tags.toLowerCase();
     }
-    return apiRequest('problemset.problems', options);
+    return apiRequest(Problemset, false, 'problemset.problems', options);
 };
 export const recentStatus = async (options) => {
-    return apiRequest('problemset.recentStatus', options);
+    return apiRequest(Submission, true, 'problemset.recentStatus', options);
 };
 //# sourceMappingURL=problemset.js.map

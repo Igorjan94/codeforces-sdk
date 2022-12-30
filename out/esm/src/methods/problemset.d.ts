@@ -1,17 +1,13 @@
 import { ProblemsetName } from '../types/common';
-import { Problem } from '../types/problem';
-import { ProblemStatistics } from '../types/problem-statistics';
+import { Problemset } from '../types/problemset';
 import { Submission } from '../types/submission';
-export type ProblemsetProblemsOptions = {
+export type ProblemsOptions = {
     tags?: Array<string> | string;
     problemsetName?: ProblemsetName;
 };
-export declare const problems: (options?: ProblemsetProblemsOptions) => Promise<{
-    problems: Array<Problem>;
-    problemStatistics: Array<ProblemStatistics>;
-}>;
-export type ProblemsetRecentStatusOptions = {
+export declare const problems: (options?: ProblemsOptions) => Promise<Problemset>;
+export type RecentStatusOptions = {
     count: number;
     problemsetName?: ProblemsetName;
 };
-export declare const recentStatus: (options: ProblemsetRecentStatusOptions) => Promise<Submission[]>;
+export declare const recentStatus: (options: RecentStatusOptions) => Promise<Submission[]>;

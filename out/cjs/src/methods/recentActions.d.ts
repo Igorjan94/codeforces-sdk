@@ -1,5 +1,5 @@
 import { RecentAction } from '../types/recent-action';
-export type RecentActionListOptions = {
+export type ListOptions = {
     count: number;
 };
-export declare const list: (options: RecentActionListOptions) => Promise<RecentAction[]>;
+export declare const list: (options: ListOptions) => Promise<RecentAction[]>;

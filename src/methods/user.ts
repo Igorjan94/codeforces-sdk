@@ -4,63 +4,63 @@ import { ContestId } from '../types/contest'
 import { RatingChange } from '../types/rating-change'
 import { Submission } from '../types/submission'
 import { User } from '../types/user'
-import { apiRequest } from '../utils/api-request'
+import { apiRequest, rawApiRequest } from '../utils/api-request'
 
-export type UserBlogEntriesOptions = {
+export type BlogEntriesOptions = {
     handle: string
 }
 
-export const blogEntries = async (options: UserBlogEntriesOptions) => {
-    return apiRequest<Array<BlogEntryShort>>('user.blogEntries', options)
+export const blogEntries = async (options: BlogEntriesOptions) => {
+    return apiRequest(BlogEntryShort, true, 'user.blogEntries', options)
 }
 
 
-export type UserFriendsOptions = {
+export type FriendsOptions = {
     onlyOnline: boolean
 }
 
-export const friends = async (options?: UserFriendsOptions) => {
-    return apiRequest<Array<Handle>>('user.friends', options, {ensureAuth: true})
+export const friends = async (options?: FriendsOptions) => {
+    return rawApiRequest<Array<Handle>>('user.friends', options, {ensureAuth: true})
 }
 
 
-export type UserInfoOptions = {
+export type InfoOptions = {
     handles: Array<Handle>
 }
 
-export const info = async (options: UserInfoOptions) => {
-    return apiRequest<Array<User>>('user.info', {handles: options.handles.join(';')})
+export const info = async (options: InfoOptions) => {
+    return apiRequest(User, true, 'user.info', {handles: options.handles.join(';')})
 }
 
 
-export type UserRatedListOptions = {
+export type RatedListOptions = {
     activeOnly?: boolean
     includeRetired?: boolean
     contestId?: ContestId
 }
 
-export const ratedList = async (options: UserRatedListOptions = {}) => {
-    return apiRequest<Array<User>>('user.ratedList', options)
+export const ratedList = async (options: RatedListOptions = {}) => {
+    return apiRequest(User, true, 'user.ratedList', options)
 }
 
 
-export type UserRatingOptions = {
+export type RatingOptions = {
     handle: Handle
 }
 
-export const rating = async (options: UserRatingOptions) => {
-    return apiRequest<Array<RatingChange>>('user.rating', options)
+export const rating = async (options: RatingOptions) => {
+    return apiRequest(RatingChange, true, 'user.rating', options)
 }
 
 
-export type UserStatusOptions = {
+export type StatusOptions = {
     handle: Handle
     from?: number
     count?: number
 }
 
-export const status = async (options: UserStatusOptions) => {
-    return apiRequest<Array<Submission>>('user.status', options)
+export const status = async (options: StatusOptions) => {
+    return apiRequest(Submission, true, 'user.status', options)
 }
 
 

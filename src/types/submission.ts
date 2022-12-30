@@ -1,5 +1,5 @@
-import { Float } from './common'
-import { ContestId } from './contest'
+import { CodeforcesObject, CODEFORCES_URL, Float } from './common'
+import { Contest, ContestId } from './contest'
 import { Party } from './party'
 import { Problem } from './problem'
 
@@ -42,7 +42,7 @@ export enum SubmissionTestset {
 
 export type SubmissionId = number & { __unique: 'SubmissionId' }
 
-export type Submission = {
+export class Submission extends CodeforcesObject<Submission> {
     id: SubmissionId
     contestId?: ContestId
     creationTimeSeconds: number
@@ -56,4 +56,15 @@ export type Submission = {
     timeConsumedMillis: number
     memoryConsumedBytes: number
     points?: Float
+
+    constructor(s: Submission) {
+        super(s)
+        this.problem = new Problem(this.problem)
+        this.author = new Party(this.author)
+    }
+
+    getLink(text?: string) {
+        const contestId = this.contestId ?? 0 as ContestId
+        return `<a href='${CODEFORCES_URL}${Contest.getGymType(contestId)}/${contestId}/submission/${this.id}'>${text ?? this.id}</a>`
+    }
 }

@@ -1,12 +1,12 @@
-import { Float } from './common';
+import { CodeforcesObject, Float } from './common';
 export declare enum ProblemResultType {
     PRELIMINARY = "PRELIMINARY",
     FINAL = "FINAL"
 }
-export type ProblemResult = {
+export declare class ProblemResult extends CodeforcesObject<ProblemResult> {
     points: Float;
     penalty?: number;
     rejectedAttemptCount: number;
     type: ProblemResultType;
     bestSubmissionTimeSeconds?: number;
-};
+}

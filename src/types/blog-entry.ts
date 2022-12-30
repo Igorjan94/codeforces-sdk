@@ -1,20 +1,25 @@
 
 export type BlogEntryId = number & { __unique: 'BlogEntryId' }
-import { AvailableLanguages, Handle } from './common'
+import { AvailableLanguages, CodeforcesObject, CODEFORCES_URL, Handle } from './common'
 
-export type BlogEntry = {
+export class BlogEntryShort extends CodeforcesObject<BlogEntryShort> {
     id: BlogEntryId
     originalLocale: AvailableLanguages
     creationTimeSeconds: number
     authorHandle: Handle
     title: string
-    content: string
     locale: AvailableLanguages
     modificationTimeSeconds: number
     allowViewHistory: boolean
     tags: Array<string>
     rating: number
+
+    getLink(text?: string) {
+        return `<a href='${CODEFORCES_URL}blog/entry/${this.id}'>${text ?? this.title}</a>`
+    }
 }
 
-export type BlogEntryShort = Omit<BlogEntry, 'content'>
+export class BlogEntry extends BlogEntryShort {
+    content: string
+}
 

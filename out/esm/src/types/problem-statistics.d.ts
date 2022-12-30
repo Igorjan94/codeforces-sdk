@@ -1,7 +1,7 @@
-import { ProblemIndex } from './common';
+import { CodeforcesObject, ProblemIndex } from './common';
 import { ContestId } from './contest';
-export type ProblemStatistics = {
+export declare class ProblemStatistics extends CodeforcesObject<ProblemStatistics> {
     contestId?: ContestId;
     index: ProblemIndex;
     solvedCount: number;
-};
+}

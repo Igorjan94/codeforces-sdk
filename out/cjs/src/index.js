@@ -48,15 +48,15 @@ globalThis.initDebug = (filename) => {
 const debug = initDebug('index');
 debug('Start');
 const api_request_1 = require("./utils/api-request");
-const ImportedAPI = __importStar(require("./methods"));
 exports.init = {
     readDefaultOptionsFromFile: api_request_1.readDefaultOptionsFromFile,
     setDefaultOptions: api_request_1.setDefaultOptions,
 };
-exports.API = ImportedAPI;
+const API = __importStar(require("./methods"));
+exports.API = __importStar(require("./methods"));
 exports.Types = __importStar(require("./types"));
 exports.default = {
-    API: exports.API,
+    API,
     init: exports.init,
 };
 //# sourceMappingURL=index.js.map

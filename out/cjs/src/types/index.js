@@ -25,9 +25,11 @@ __exportStar(require("./party"), exports);
 __exportStar(require("./problem-result"), exports);
 __exportStar(require("./problem-statistics"), exports);
 __exportStar(require("./problem"), exports);
+__exportStar(require("./problemset"), exports);
 __exportStar(require("./ranklist-row"), exports);
 __exportStar(require("./rating-change"), exports);
 __exportStar(require("./recent-action"), exports);
+__exportStar(require("./standings"), exports);
 __exportStar(require("./submission"), exports);
 __exportStar(require("./user"), exports);
 //# sourceMappingURL=index.js.map

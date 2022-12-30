@@ -3,6 +3,7 @@
   "plan": "web",
   "version": "0.0.1",
   "description": "SDK for codeforces.com",
+  "keywords": ["codeforces", "sdk"],
   "main": "./out/esm/src/index.js",
   "exports": {
     "import": "./out/esm/src/index.js",
@@ -17,10 +18,10 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.17",
+    "ts-toolbelt": "^9.6.0",
     "typescript": "^4.9.3"
   },
   "optionalDependencies": {
-    "crypto": "^1.0.1",
     "debug": "^4.3.4",
     "source-map-support": "^0.5.21"
   },
@@ -28,8 +29,10 @@
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/Igorjan94/codeforces-sdk"
   },
+  "homepage": "https://github.com/Igorjan94/codeforces-sdk",
   "author": "Igorjan94",
-  "license": "PRIVATE"
+  "license": "MIT"
 }

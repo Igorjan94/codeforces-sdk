@@ -1,3 +1,5 @@
+import { CodeforcesObject } from './common';
+import { ContestId } from './contest';
 import { Party } from './party';
 import { Problem } from './problem';
 export type HackId = number & {
@@ -13,7 +15,7 @@ export declare enum HackVerdict {
     TESTING = "TESTING",
     OTHER = "OTHER"
 }
-export type Hack = {
+export declare class Hack extends CodeforcesObject<Hack> {
     id: HackId;
     creationTimeSeconds: number;
     hacker: Party;
@@ -26,4 +28,6 @@ export type Hack = {
         protocol: string;
         verdict: string;
     };
-};
+    constructor(h: Hack);
+    getLink(constestId: ContestId, text?: string): string;
+}

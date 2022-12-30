@@ -17,4 +17,8 @@ export type ProblemsetName = 'acmsguru';
 export type ProblemIndex = (Letters | `${Letters}${Numbers}` | string) & {
     __unique: 'ProblemIndex';
 };
+export declare const CODEFORCES_URL: "https://codeforces.com/";
+export declare class CodeforcesObject<T> {
+    constructor(o: T);
+}
 export {};

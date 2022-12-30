@@ -33,15 +33,14 @@ import {
     readDefaultOptionsFromFile,
     setDefaultOptions,
 } from './utils/api-request'
-import * as ImportedAPI from './methods'
 
 export const init = {
     readDefaultOptionsFromFile,
     setDefaultOptions,
 }
 
-export const API = ImportedAPI
-
+import * as API from './methods'
+export * as API from './methods'
 export * as Types from './types'
 
 export default {

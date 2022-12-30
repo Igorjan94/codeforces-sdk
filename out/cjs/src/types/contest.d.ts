@@ -1,4 +1,4 @@
-import { Handle } from './common';
+import { CodeforcesObject, Handle } from './common';
 export declare enum ContestType {
     CF = "CF",
     IOI = "IOI",
@@ -15,7 +15,9 @@ export type ContestDifficulty = 1 | 2 | 3 | 4 | 5;
 export type ContestId = number & {
     __unique: 'ContestId';
 };
-export type Contest = {
+export declare class Contest extends CodeforcesObject<Contest> {
+    static getIsGym(contestId: ContestId): boolean;
+    static getGymType(contestId: ContestId): "contest" | "gym";
     id: ContestId;
     name: string;
     type: ContestType;
@@ -28,9 +30,13 @@ export type Contest = {
     websiteUrl?: string;
     description?: string;
     difficulty?: ContestDifficulty;
+    /** Human-readable type of the contest from the following categories: Official ICPC Contest, Official School Contest, Opencup Contest, School/University/City/Region Championship, Training Camp Contest, Official International Personal Contest, Training Contest */
     kind?: string;
     icpcRegion?: string;
     country?: string;
     city?: string;
     season?: string;
-};
+    isGym: boolean;
+    constructor(c: Contest);
+    getLink(text?: string): string;
+}

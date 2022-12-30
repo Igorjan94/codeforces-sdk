@@ -1,4 +1,4 @@
-import { Float, ProblemIndex, ProblemsetName } from './common'
+import { CodeforcesObject, CODEFORCES_URL, Float, ProblemIndex, ProblemsetName } from './common'
 import { ContestId } from './contest'
 
 export enum ProblemType {
@@ -6,7 +6,7 @@ export enum ProblemType {
     QUESTION = 'QUESTION',
 }
 
-export type Problem = {
+export class Problem extends CodeforcesObject<Problem> {
     contestId: ContestId
     problemsetName?: ProblemsetName
     index: ProblemIndex
@@ -15,5 +15,9 @@ export type Problem = {
     points?: Float
     rating?: number
     tags: Array<string>
+
+    getLink(text?: string) {
+        return `<a href='${CODEFORCES_URL}problemset/problem/${this.contestId}/${this.index}'>${text ?? this.name}</a>`
+    }
 }
 

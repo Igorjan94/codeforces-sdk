@@ -1,10 +1,10 @@
-import { Float, ProblemIndex, ProblemsetName } from './common';
+import { CodeforcesObject, Float, ProblemIndex, ProblemsetName } from './common';
 import { ContestId } from './contest';
 export declare enum ProblemType {
     PROGRAMMING = "PROGRAMMING",
     QUESTION = "QUESTION"
 }
-export type Problem = {
+export declare class Problem extends CodeforcesObject<Problem> {
     contestId: ContestId;
     problemsetName?: ProblemsetName;
     index: ProblemIndex;
@@ -13,4 +13,5 @@ export type Problem = {
     points?: Float;
     rating?: number;
     tags: Array<string>;
-};
+    getLink(text?: string): string;
+}

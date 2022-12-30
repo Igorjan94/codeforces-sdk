@@ -9,9 +9,11 @@ export * from './party';
 export * from './problem-result';
 export * from './problem-statistics';
 export * from './problem';
+export * from './problemset';
 export * from './ranklist-row';
 export * from './rating-change';
 export * from './recent-action';
+export * from './standings';
 export * from './submission';
 export * from './user';
 //# sourceMappingURL=index.js.map

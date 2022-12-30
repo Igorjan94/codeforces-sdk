@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.apiRequest = exports.readDefaultOptionsFromFile = exports.setDefaultOptions = void 0;
+exports.apiRequest = exports.rawApiRequest = exports.readDefaultOptionsFromFile = exports.setDefaultOptions = void 0;
 const fs_1 = __importDefault(require("fs"));
-const bottleneck_1 = __importDefault(require("bottleneck"));
 const http_request_1 = require("./http-request");
 const debug = initDebug('index');
+const bottleneck_1 = __importDefault(require("bottleneck"));
 let API = 'https://codeforces.com/api/';
 let API_INTERVAL = 2000;
 const limiter = new bottleneck_1.default({
@@ -25,7 +25,7 @@ let randomString;
 const loadCrypto = () => {
     try {
         debug('Loading crypto...');
-        const crypto = require('crypto');
+        const crypto = require('node:crypto');
         debug('Crypto found');
         getHash = (s) => {
             const hash = crypto.createHash('sha512');
@@ -52,7 +52,7 @@ const readDefaultOptionsFromFile = (filename) => {
     debug('Config is loaded');
 };
 exports.readDefaultOptionsFromFile = readDefaultOptionsFromFile;
-const apiRequest = async (method, options = {}, extra = { ensureAuth: false }) => {
+const rawApiRequest = async (method, options = {}, extra = { ensureAuth: false }) => {
     const h = defaultOptions;
     const reqOptions = { ...options };
     if ('lang' in defaultOptions)
@@ -76,16 +76,25 @@ const apiRequest = async (method, options = {}, extra = { ensureAuth: false }) =
         const rand = randomString(6);
         reqOptions.time = time;
         reqOptions.apiKey = defaultOptions.key;
-        const searchParams = new URLSearchParams(reqOptions);
-        searchParams.sort();
-        const hash = `${rand}/${method}?${searchParams.toString()}#${defaultOptions.secret}`;
+        const searchParams = Object.entries(reqOptions).sort((a, b) => a < b ? -1 : a > b ? 1 : 0).map(([k, v]) => `${k}=${v}`).join('&');
+        const hash = `${rand}/${method}?${searchParams}#${defaultOptions.secret}`;
+        console.log(hash);
         reqOptions.apiSig = `${rand}${getHash(hash)}`;
         debug('Request is authorized');
     }
     else if (extra.ensureAuth) {
         throw new Error(`Method ${method} needs authorization. Use 'setDefaultOptions({key, secret})' or 'readDefaultOptionsFromFile(filename)'`);
     }
-    return await rateLimitedHttpRequest(method, reqOptions);
+    const res = await rateLimitedHttpRequest(method, reqOptions);
+    return res;
+};
+exports.rawApiRequest = rawApiRequest;
+const apiRequest = async (type, isArray, method, options = {}, extra = { ensureAuth: false }) => {
+    const res = await (0, exports.rawApiRequest)(method, options, extra);
+    if (Array.isArray(res) && isArray)
+        return res.map(one => new type(one));
+    else
+        return new type(res);
 };
 exports.apiRequest = apiRequest;
 //# sourceMappingURL=api-request.js.map

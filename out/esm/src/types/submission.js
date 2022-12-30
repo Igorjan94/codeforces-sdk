@@ -1,3 +1,7 @@
+import { CodeforcesObject, CODEFORCES_URL } from './common';
+import { Contest } from './contest';
+import { Party } from './party';
+import { Problem } from './problem';
 export var SubmissionVerdict;
 (function (SubmissionVerdict) {
     SubmissionVerdict["FAILED"] = "FAILED";
@@ -35,4 +39,15 @@ export var SubmissionTestset;
     SubmissionTestset["TESTS9"] = "TESTS9";
     SubmissionTestset["TESTS10"] = "TESTS10";
 })(SubmissionTestset || (SubmissionTestset = {}));
+export class Submission extends CodeforcesObject {
+    constructor(s) {
+        super(s);
+        this.problem = new Problem(this.problem);
+        this.author = new Party(this.author);
+    }
+    getLink(text) {
+        const contestId = this.contestId ?? 0;
+        return `<a href='${CODEFORCES_URL}${Contest.getGymType(contestId)}/${contestId}/submission/${this.id}'>${text ?? this.id}</a>`;
+    }
+}
 //# sourceMappingURL=submission.js.map

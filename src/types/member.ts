@@ -1,6 +1,6 @@
-import { Handle } from './common'
+import { CodeforcesObject, Handle } from './common'
 
-export type Member = {
+export class Member extends CodeforcesObject<Member> {
     handle: Handle
     name?: string
 }

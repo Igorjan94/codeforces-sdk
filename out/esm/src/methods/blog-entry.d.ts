@@ -1,10 +1,10 @@
 import { BlogEntry, BlogEntryId } from '../types/blog-entry';
 import { Comment } from '../types/comment';
-export type BlogEntryCommentsOptions = {
+export type CommentsOptions = {
     blogEntryId: BlogEntryId;
 };
-export declare const comments: (options: BlogEntryCommentsOptions) => Promise<Comment[]>;
-export type BlogEntryViewOptions = {
+export declare const comments: (options: CommentsOptions) => Promise<Comment[]>;
+export type ViewOptions = {
     blogEntryId: BlogEntryId;
 };
-export declare const view: (options: BlogEntryViewOptions) => Promise<BlogEntry>;
+export declare const view: (options: ViewOptions) => Promise<BlogEntry>;

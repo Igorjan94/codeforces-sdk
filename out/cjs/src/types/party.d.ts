@@ -1,3 +1,4 @@
+import { CodeforcesObject } from './common';
 import { ContestId } from './contest';
 import { Member } from './member';
 export declare enum ParticipantType {
@@ -7,7 +8,7 @@ export declare enum ParticipantType {
     MANAGER = "MANAGER",
     OUT_OF_COMPETITION = "OUT_OF_COMPETITION"
 }
-export type Party = {
+export declare class Party extends CodeforcesObject<Party> {
     contestId?: ContestId;
     members: Array<Member>;
     participantType: ParticipantType;
@@ -16,4 +17,5 @@ export type Party = {
     ghost: boolean;
     room?: number;
     startTimeSeconds?: number;
-};
+    constructor(p: Party);
+}

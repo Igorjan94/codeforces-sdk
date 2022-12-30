@@ -3,37 +3,38 @@ import { Hack } from '../types/hack'
 import { Problem } from '../types/problem'
 import { RanklistRow } from '../types/ranklist-row'
 import { RatingChange } from '../types/rating-change'
+import { Standings } from '../types/standings'
 import { Submission } from '../types/submission'
 import { apiRequest } from '../utils/api-request'
 
-export type ContestHacksOptions = {
+export type HacksOptions = {
     contestId: ContestId
 }
 
-export const hacks = async (options: ContestHacksOptions) => {
-    return apiRequest<Array<Hack>>('contest.hacks', options)
+export const hacks = async (options: HacksOptions) => {
+    return apiRequest(Hack, true, 'contest.hacks', options)
 }
 
 
-export type ContestListOptions = {
+export type ListOptions = {
     gym?: boolean
 }
 
-export const list = async (options: ContestListOptions = {}) => {
-    return apiRequest<Array<Contest>>('contest.list', options)
+export const list = async (options: ListOptions = {}) => {
+    return apiRequest(Contest, true, 'contest.list', options)
 }
 
 
-export type ContestRatingChangesOptions = {
+export type RatingChangesOptions = {
     contestId: ContestId
 }
 
-export const ratingChanges = async (options: ContestRatingChangesOptions) => {
-    return apiRequest<Array<RatingChange>>('contest.ratingChanges', options)
+export const ratingChanges = async (options: RatingChangesOptions) => {
+    return apiRequest(RatingChange, true, 'contest.ratingChanges', options)
 }
 
 
-export type ContestStandingsOptions = {
+export type StandingsOptions = {
     contestId: ContestId
     from: number
     count?: number
@@ -42,25 +43,21 @@ export type ContestStandingsOptions = {
     showUnofficial?: boolean
 }
 
-export const standings = async (options: ContestStandingsOptions) => {
+export const standings = async (options: StandingsOptions) => {
     if (Array.isArray(options.handles)) {
         options.handles = options.handles.join(';')
     }
-    return apiRequest<{
-        contest: Contest,
-        problems: Array<Problem>,
-        rows: Array<RanklistRow>,
-    }>('contest.standings', options)
+    return apiRequest(Standings, false, 'contest.standings', options)
 }
 
 
-export type ContestStatusOptions = {
+export type StatusOptions = {
     contestId: ContestId
     handle?: string
     from?: number
     count?: number
 }
 
-export const status = async (options: ContestStatusOptions) => {
-    return apiRequest<Array<Submission>>('contest.status', options)
+export const status = async (options: StatusOptions) => {
+    return apiRequest(Submission, true, 'contest.status', options)
 }
