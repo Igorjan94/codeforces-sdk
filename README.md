@@ -73,7 +73,7 @@ And some more objects:
 * Problemset
 * Standings
 
-Some of object are extended for convenience: I've added `contest: Contest` field in `RanklistRow` and `ProblemResult`.
+Some objects are extended with extra fields for convenience: I've added `contest: Contest` field in `RanklistRow` and `ProblemResult`.
 
 ## Class methods
 
@@ -91,11 +91,12 @@ Majority of classes (where applicable) has `getLink(title)` and `toString()` fun
 
 ## Method arguments
 
-Every API method has exactly one object argument with the same name as method, but CamelCased and appended Options: `contest.list` are converted to `ContestListOptions`.
+Every API method has exactly one object argument with the same name as method, but CamelCased and appended `Options`: e.g. `contest.list` has `ContestListOptions` argument.
 
 You'll find illogical that, for example, `contest.list` method accepts object `({gym: boolean})` instead of one boolean argument `(gym: boolean)`, but I believe that:
 * it's consistent with other methods;
-* if codeforces will add some arguments (e.g. limit: number, from: number) then sdk will be backward compatible: old code won't break on sdk update.
+* it's more convenient to explicitly name arguments on caller's side (compare: `list(false)` and `list({gym: false})`. What does `false` mean in first case?);
+* if codeforces will add some arguments (e.g. `limit: number`, `from: number`) then sdk will be backward compatible: old code won't break on sdk update.
 
 If you want to proxy function arguments, you can use `MethodNameOptions` types. It's available for every method. For example:
 ```typescript
@@ -156,7 +157,7 @@ const friendList = async () => {
 ```
 
 ## Example
-This example prints users who took part in ALL contestsIds and solved at least one problem in each contest ordered by sum of taken places:
+This example prints users who took part in ALL `contestsIds` and solved at least one problem in each contest ordered by sum of taken places:
 
 ```typescript
 // Import Types and API from sdk
@@ -253,7 +254,11 @@ If you want to output colorfull standings and handles in console, you can instal
 
 [Example](https://github.com/Igorjan94/codeforces-projects/blob/master/src/standings.ts).
 
-![ Image ](https://raw.githubusercontent.com/Igorjan94/codeforces-projects/master/data/standings.png?token=GHSAT0AAAAAAB2MP7ER25HE3NHQPVJD2K6QY6OHJKQ)
+![ Image ](https://github.com/Igorjan94/codeforces-projects/blob/master/data/standings.png?raw=true)
+
+## Tests
+
+Now sdk has only [compile tests](https://github.com/Igorjan94/codeforces-sdk/blob/master/tests/compile.ts#L8): you can verify that all methods return proper type from [documentation](https://codeforces.com/apiHelp/methods).
 
 ## Bugs
 If you find any bugs (I believe they exist!) feel free to create issue on github or notify anywhere you find me by my nickname `Igorjan94`.
@@ -266,6 +271,8 @@ If you find any bugs (I believe they exist!) feel free to create issue on github
     * Get problem statement
     * ...
 * Add support to overload used colors
+* Runtime tests
+* More examples
 * ...
 
 ## Contributors
