@@ -1,3 +1,4 @@
+import { Handle } from '../types/common'
 import { Contest, ContestId } from '../types/contest'
 import { Hack } from '../types/hack'
 import { Problem } from '../types/problem'
@@ -38,14 +39,14 @@ export type StandingsOptions = {
     contestId: ContestId
     from: number
     count?: number
-    handles?: string | Array<string>
+    handles?: Handle | Array<Handle>
     room?: number
     showUnofficial?: boolean
 }
 
 export const standings = async (options: StandingsOptions) => {
     if (Array.isArray(options.handles)) {
-        options.handles = options.handles.join(';')
+        options.handles = options.handles.join(';') as Handle
     }
     return apiRequest(Standings, false, 'contest.standings', options)
 }
@@ -53,7 +54,7 @@ export const standings = async (options: StandingsOptions) => {
 
 export type StatusOptions = {
     contestId: ContestId
-    handle?: string
+    handle?: Handle
     from?: number
     count?: number
 }

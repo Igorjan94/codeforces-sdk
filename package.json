@@ -23,7 +23,8 @@
   },
   "optionalDependencies": {
     "debug": "^4.3.4",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "cli-color": "^2.0.3"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json"

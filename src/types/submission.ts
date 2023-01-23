@@ -65,6 +65,6 @@ export class Submission extends CodeforcesObject<Submission> {
 
     getLink(text?: string) {
         const contestId = this.contestId ?? 0 as ContestId
-        return `<a href='${CODEFORCES_URL}${Contest.getGymType(contestId)}/${contestId}/submission/${this.id}'>${text ?? this.id}</a>`
+        return `<a href="${CODEFORCES_URL}${Contest.getGymType(contestId)}/${contestId}/submission/${this.id}">${text ?? this.id}</a>`
     }
 }

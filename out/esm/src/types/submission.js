@@ -47,7 +47,7 @@ export class Submission extends CodeforcesObject {
     }
     getLink(text) {
         const contestId = this.contestId ?? 0;
-        return `<a href='${CODEFORCES_URL}${Contest.getGymType(contestId)}/${contestId}/submission/${this.id}'>${text ?? this.id}</a>`;
+        return `<a href="${CODEFORCES_URL}${Contest.getGymType(contestId)}/${contestId}/submission/${this.id}">${text ?? this.id}</a>`;
     }
 }
 //# sourceMappingURL=submission.js.map

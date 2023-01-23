@@ -23,12 +23,15 @@ class Contest extends common_1.CodeforcesObject {
     static getGymType(contestId) {
         return Contest.getIsGym(contestId) ? 'contest' : 'gym';
     }
+    toString() {
+        return this.name;
+    }
     constructor(c) {
         super(c);
         this.isGym = Contest.getIsGym(this.id);
     }
     getLink(text) {
-        return `<a href='${common_1.CODEFORCES_URL}${Contest.getGymType(this.id)}/${this.id}'>${text ?? this.id}</a>`;
+        return `<a href="${common_1.CODEFORCES_URL}${Contest.getGymType(this.id)}/${this.id}">${text ?? this.id}</a>`;
     }
 }
 exports.Contest = Contest;

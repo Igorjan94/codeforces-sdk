@@ -27,5 +27,11 @@ export declare class User extends CodeforcesObject<User> {
     avatar: string;
     /** User's title photo URL */
     titlePhoto: string;
+    getColor(): "black" | "gray" | "green" | "cyan" | "blue" | "violet" | "orange" | "red" | "legendary";
+    getColoredHandle(): any;
+    getClass(): string;
+    getStyledLink(text?: string): string;
     getLink(text?: string): string;
+    private getLinkImpl;
+    static getColoredHandle(handle: Handle, users: Record<Handle, User>): any;
 }

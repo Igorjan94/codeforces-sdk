@@ -13,5 +13,6 @@ export declare class Problem extends CodeforcesObject<Problem> {
     points?: Float;
     rating?: number;
     tags: Array<string>;
+    toString(): string;
     getLink(text?: string): string;
 }

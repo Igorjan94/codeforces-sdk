@@ -11,5 +11,6 @@ export declare class Comment extends CodeforcesObject<Comment> {
     text: string;
     parentCommentId?: CommentId;
     rating: number;
+    toString(): string;
     getLink(blogEntryId: BlogEntryId, text?: string): string;
 }

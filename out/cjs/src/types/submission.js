@@ -50,7 +50,7 @@ class Submission extends common_1.CodeforcesObject {
     }
     getLink(text) {
         const contestId = this.contestId ?? 0;
-        return `<a href='${common_1.CODEFORCES_URL}${contest_1.Contest.getGymType(contestId)}/${contestId}/submission/${this.id}'>${text ?? this.id}</a>`;
+        return `<a href="${common_1.CODEFORCES_URL}${contest_1.Contest.getGymType(contestId)}/${contestId}/submission/${this.id}">${text ?? this.id}</a>`;
     }
 }
 exports.Submission = Submission;

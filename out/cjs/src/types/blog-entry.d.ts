@@ -13,6 +13,7 @@ export declare class BlogEntryShort extends CodeforcesObject<BlogEntryShort> {
     allowViewHistory: boolean;
     tags: Array<string>;
     rating: number;
+    toString(): string;
     getLink(text?: string): string;
 }
 export declare class BlogEntry extends BlogEntryShort {

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { httpRequest } from './http-request'
-import { DefaultApiOptions } from '../types/common'
+import { AvailableLanguages, DefaultApiOptions } from '../types/common'
 const debug = initDebug('index')
 import bottleneck from 'bottleneck'
 
@@ -80,8 +80,16 @@ export const rawApiRequest = async <T = any>(
 ): Promise<T> => {
     const h = defaultOptions
     const reqOptions: any = {...options}
+
+    if (!('lang' in defaultOptions) && process.env.CODEFORCES_LANG) {
+        defaultOptions
+            // @ts-ignore
+            .lang
+                = process.env.CODEFORCES_LANG as AvailableLanguages
+    }
     if ('lang' in defaultOptions)
         reqOptions.lang = defaultOptions.lang
+
     if (!('key' in defaultOptions) && process.env.CODEFORCES_KEY) {
         defaultOptions
             // @ts-ignore

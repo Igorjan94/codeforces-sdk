@@ -14,8 +14,12 @@ export class BlogEntryShort extends CodeforcesObject<BlogEntryShort> {
     tags: Array<string>
     rating: number
 
+    toString() {
+        return `${this.title}`
+    }
+
     getLink(text?: string) {
-        return `<a href='${CODEFORCES_URL}blog/entry/${this.id}'>${text ?? this.title}</a>`
+        return `<a href="${CODEFORCES_URL}blog/entry/${this.id}">${text ?? this.title}</a>`
     }
 }
 

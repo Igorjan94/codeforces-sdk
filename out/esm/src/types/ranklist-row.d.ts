@@ -1,7 +1,9 @@
 import { CodeforcesObject, Float } from './common';
+import { Contest } from './contest';
 import { Party } from './party';
 import { ProblemResult } from './problem-result';
 export declare class RanklistRow extends CodeforcesObject<RanklistRow> {
+    contest: Contest;
     party: Party;
     rank: number;
     points: Float;
@@ -11,5 +13,5 @@ export declare class RanklistRow extends CodeforcesObject<RanklistRow> {
     problemResults: Array<ProblemResult>;
     /** For IOI contests only */
     lastSubmissionTimeSeconds?: number;
-    constructor(r: RanklistRow);
+    constructor(r: RanklistRow, c: Contest);
 }

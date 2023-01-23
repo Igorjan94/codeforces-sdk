@@ -16,8 +16,12 @@ export class Problem extends CodeforcesObject<Problem> {
     rating?: number
     tags: Array<string>
 
+    toString() {
+        return this.index as string
+    }
+
     getLink(text?: string) {
-        return `<a href='${CODEFORCES_URL}problemset/problem/${this.contestId}/${this.index}'>${text ?? this.name}</a>`
+        return `<a href="${CODEFORCES_URL}problemset/problem/${this.contestId}/${this.index}">${text ?? this.name}</a>`
     }
 }
 

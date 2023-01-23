@@ -12,7 +12,11 @@ export class Comment extends CodeforcesObject<Comment> {
     parentCommentId?: CommentId
     rating: number
 
+    toString() {
+        return `${this.text}`
+    }
+
     getLink(blogEntryId: BlogEntryId, text?: string) {
-        return `<a href='${CODEFORCES_URL}blog/entry/${blogEntryId}#comment-${this.id}'>${text ?? this.id}</a>`
+        return `<a href="${CODEFORCES_URL}blog/entry/${blogEntryId}#comment-${this.id}">${text ?? this.id}</a>`
     }
 }

@@ -37,6 +37,7 @@ export declare class Contest extends CodeforcesObject<Contest> {
     city?: string;
     season?: string;
     isGym: boolean;
+    toString(): string;
     constructor(c: Contest);
     getLink(text?: string): string;
 }

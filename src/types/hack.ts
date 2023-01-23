@@ -38,6 +38,6 @@ export class Hack extends CodeforcesObject<Hack> {
     }
 
     getLink(constestId: ContestId, text?: string) {
-        return `<a href='${CODEFORCES_URL}contest/${constestId}/hacks/${this.id}'>${text ?? this.id}</a>`
+        return `<a href="${CODEFORCES_URL}contest/${constestId}/hacks/${this.id}">${text ?? this.id}</a>`
     }
 }

@@ -7,10 +7,10 @@ export class Standings extends CodeforcesObject {
         super(s);
         this.contest = new Contest(this.contest);
         this.problems = this.problems.map(problem => new Problem(problem));
-        this.rows = this.rows.map(row => new RanklistRow(row));
+        this.rows = this.rows.map(row => new RanklistRow(row, this.contest));
     }
     getLink(text) {
-        return `<a href='${CODEFORCES_URL}${Contest.getGymType(this.contest.id)}/${this.contest.id}/standings'>${text ?? this.contest.name}</a>`;
+        return `<a href="${CODEFORCES_URL}${Contest.getGymType(this.contest.id)}/${this.contest.id}/standings">${text ?? this.contest.name}</a>`;
     }
 }
 //# sourceMappingURL=standings.js.map

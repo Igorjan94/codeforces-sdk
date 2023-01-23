@@ -23,7 +23,7 @@ class Hack extends common_1.CodeforcesObject {
         this.problem = new problem_1.Problem(this.problem);
     }
     getLink(constestId, text) {
-        return `<a href='${common_1.CODEFORCES_URL}contest/${constestId}/hacks/${this.id}'>${text ?? this.id}</a>`;
+        return `<a href="${common_1.CODEFORCES_URL}contest/${constestId}/hacks/${this.id}">${text ?? this.id}</a>`;
     }
 }
 exports.Hack = Hack;

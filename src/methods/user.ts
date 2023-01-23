@@ -7,7 +7,7 @@ import { User } from '../types/user'
 import { apiRequest, rawApiRequest } from '../utils/api-request'
 
 export type BlogEntriesOptions = {
-    handle: string
+    handle: Handle
 }
 
 export const blogEntries = async (options: BlogEntriesOptions) => {

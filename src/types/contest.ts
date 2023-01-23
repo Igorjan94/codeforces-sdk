@@ -47,13 +47,17 @@ export class Contest extends CodeforcesObject<Contest> {
     season?: string
     isGym: boolean
 
+    toString() {
+        return this.name
+    }
+
     constructor(c: Contest) {
         super(c)
         this.isGym = Contest.getIsGym(this.id)
     }
 
     getLink(text?: string) {
-        return `<a href='${CODEFORCES_URL}${Contest.getGymType(this.id)}/${this.id}'>${text ?? this.id}</a>`
+        return `<a href="${CODEFORCES_URL}${Contest.getGymType(this.id)}/${this.id}">${text ?? this.id}</a>`
     }
 }
 

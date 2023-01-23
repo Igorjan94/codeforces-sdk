@@ -55,6 +55,12 @@ exports.readDefaultOptionsFromFile = readDefaultOptionsFromFile;
 const rawApiRequest = async (method, options = {}, extra = { ensureAuth: false }) => {
     const h = defaultOptions;
     const reqOptions = { ...options };
+    if (!('lang' in defaultOptions) && process.env.CODEFORCES_LANG) {
+        defaultOptions
+            // @ts-ignore
+            .lang
+            = process.env.CODEFORCES_LANG;
+    }
     if ('lang' in defaultOptions)
         reqOptions.lang = defaultOptions.lang;
     if (!('key' in defaultOptions) && process.env.CODEFORCES_KEY) {

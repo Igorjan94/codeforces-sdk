@@ -5,7 +5,7 @@ import { RatingChange } from '../types/rating-change';
 import { Submission } from '../types/submission';
 import { User } from '../types/user';
 export type BlogEntriesOptions = {
-    handle: string;
+    handle: Handle;
 };
 export declare const blogEntries: (options: BlogEntriesOptions) => Promise<BlogEntryShort[]>;
 export type FriendsOptions = {

@@ -20,7 +20,7 @@ export class Hack extends CodeforcesObject {
         this.problem = new Problem(this.problem);
     }
     getLink(constestId, text) {
-        return `<a href='${CODEFORCES_URL}contest/${constestId}/hacks/${this.id}'>${text ?? this.id}</a>`;
+        return `<a href="${CODEFORCES_URL}contest/${constestId}/hacks/${this.id}">${text ?? this.id}</a>`;
     }
 }
 //# sourceMappingURL=hack.js.map

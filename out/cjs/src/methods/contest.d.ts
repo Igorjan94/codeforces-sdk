@@ -1,3 +1,4 @@
+import { Handle } from '../types/common';
 import { Contest, ContestId } from '../types/contest';
 import { Hack } from '../types/hack';
 import { RatingChange } from '../types/rating-change';
@@ -19,14 +20,14 @@ export type StandingsOptions = {
     contestId: ContestId;
     from: number;
     count?: number;
-    handles?: string | Array<string>;
+    handles?: Handle | Array<Handle>;
     room?: number;
     showUnofficial?: boolean;
 };
 export declare const standings: (options: StandingsOptions) => Promise<Standings>;
 export type StatusOptions = {
     contestId: ContestId;
-    handle?: string;
+    handle?: Handle;
     from?: number;
     count?: number;
 };

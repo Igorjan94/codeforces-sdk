@@ -12,10 +12,10 @@ export class Standings extends CodeforcesObject<Standings> {
         super(s)
         this.contest = new Contest(this.contest)
         this.problems = this.problems.map(problem => new Problem(problem))
-        this.rows = this.rows.map(row => new RanklistRow(row))
+        this.rows = this.rows.map(row => new RanklistRow(row, this.contest))
     }
 
     getLink(text?: string) {
-        return `<a href='${CODEFORCES_URL}${Contest.getGymType(this.contest.id)}/${this.contest.id}/standings'>${text ?? this.contest.name}</a>`
+        return `<a href="${CODEFORCES_URL}${Contest.getGymType(this.contest.id)}/${this.contest.id}/standings">${text ?? this.contest.name}</a>`
     }
 }

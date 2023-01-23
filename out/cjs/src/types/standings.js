@@ -10,10 +10,10 @@ class Standings extends common_1.CodeforcesObject {
         super(s);
         this.contest = new contest_1.Contest(this.contest);
         this.problems = this.problems.map(problem => new problem_1.Problem(problem));
-        this.rows = this.rows.map(row => new ranklist_row_1.RanklistRow(row));
+        this.rows = this.rows.map(row => new ranklist_row_1.RanklistRow(row, this.contest));
     }
     getLink(text) {
-        return `<a href='${common_1.CODEFORCES_URL}${contest_1.Contest.getGymType(this.contest.id)}/${this.contest.id}/standings'>${text ?? this.contest.name}</a>`;
+        return `<a href="${common_1.CODEFORCES_URL}${contest_1.Contest.getGymType(this.contest.id)}/${this.contest.id}/standings">${text ?? this.contest.name}</a>`;
     }
 }
 exports.Standings = Standings;

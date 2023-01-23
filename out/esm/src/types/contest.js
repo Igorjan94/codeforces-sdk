@@ -20,12 +20,15 @@ export class Contest extends CodeforcesObject {
     static getGymType(contestId) {
         return Contest.getIsGym(contestId) ? 'contest' : 'gym';
     }
+    toString() {
+        return this.name;
+    }
     constructor(c) {
         super(c);
         this.isGym = Contest.getIsGym(this.id);
     }
     getLink(text) {
-        return `<a href='${CODEFORCES_URL}${Contest.getGymType(this.id)}/${this.id}'>${text ?? this.id}</a>`;
+        return `<a href="${CODEFORCES_URL}${Contest.getGymType(this.id)}/${this.id}">${text ?? this.id}</a>`;
     }
 }
 //# sourceMappingURL=contest.js.map

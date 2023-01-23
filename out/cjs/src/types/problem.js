@@ -8,8 +8,11 @@ var ProblemType;
     ProblemType["QUESTION"] = "QUESTION";
 })(ProblemType = exports.ProblemType || (exports.ProblemType = {}));
 class Problem extends common_1.CodeforcesObject {
+    toString() {
+        return this.index;
+    }
     getLink(text) {
-        return `<a href='${common_1.CODEFORCES_URL}problemset/problem/${this.contestId}/${this.index}'>${text ?? this.name}</a>`;
+        return `<a href="${common_1.CODEFORCES_URL}problemset/problem/${this.contestId}/${this.index}">${text ?? this.name}</a>`;
     }
 }
 exports.Problem = Problem;
