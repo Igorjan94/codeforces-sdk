@@ -1,29 +1,29 @@
 # codeforces-sdk
 
-Typescript sdk for [codeforces](https://codeforces.com)
+Typescript sdk for [codeforces](https://codeforces.com).
 
 ## Is it official?
 
-Yes, it makes queries to official [codeforces API](https://codeforces.com/apiHelp)
+Yes, it makes queries to official [codeforces API](https://codeforces.com/apiHelp).
 
 ## Is it unofficial?
 
-Yes, because it's implemented by contestant, not codeforces team
+Yes, because it's implemented by contestant, not codeforces team.
 
 ## Installation
 
-```
+```bash
 npm i codeforces-sdk
 ```
 
 ## Documentation
 
-You can use official codeforces API [documentation](https://codeforces.com/apiHelp), but it's easier just use IDE's autocomplete
+You can use official codeforces API [documentation](https://codeforces.com/apiHelp), but it's easier just use IDE's autocomplete.
 
 From documentation:
 > API may be requested at most 1 time per two seconds
 
-Sdk uses this limitation and rate limits requests to API, you don't need to manually sleep after each request
+Sdk uses this limitation and rate limits requests to API, you don't need to manually sleep after each request.
 
 ## Usage
 
@@ -32,7 +32,7 @@ You can use sdk with es-modules:
 import { Types, API, init } from 'codeforces-sdk'
 ```
 
-Or with commonjs require:
+or with commonjs require:
 ```typescript
 const codeforces = require('codeforces-sdk')
 ```
@@ -73,11 +73,11 @@ And some more objects:
 * Problemset
 * Standings
 
-Some of object are extended for convenience: I've added `contest: Contest` field in `RanklistRow` and `ProblemResult`
+Some of object are extended for convenience: I've added `contest: Contest` field in `RanklistRow` and `ProblemResult`.
 
 ## Class methods
 
-Majority of classes (where applicable) has `getLink(title)` and `toString()` functions
+Majority of classes (where applicable) has `getLink(title)` and `toString()` functions:
 ```html
 >>> user.getLink()
 <a  href="https://codeforces.com/profile/Igorjan94">Igorjan94</a>
@@ -91,7 +91,7 @@ Majority of classes (where applicable) has `getLink(title)` and `toString()` fun
 
 ## Method arguments
 
-Every API method has exactly one object argument with the same name as method, but CamelCased and appended Options: `contest.list` are converted to `ContestListOptions`
+Every API method has exactly one object argument with the same name as method, but CamelCased and appended Options: `contest.list` are converted to `ContestListOptions`.
 
 You'll find illogical that, for example, `contest.list` method accepts object `({gym: boolean})` instead of one boolean argument `(gym: boolean)`, but I believe that:
 * it's consistent with other methods;
@@ -112,7 +112,7 @@ const multipleStandings = async (options: Omit<API.contest.StandingsOptions, 'co
 
 ## Type aliases
 
-I use aliases `SomethingId` instead of `number` and `Handle` instead of `string` to avoid messing up function arguments
+I use aliases `SomethingId` instead of `number` and `Handle` instead of `string` to avoid messing up function arguments.
 
 For example:
 ```typescript
@@ -123,7 +123,7 @@ const handle = contest.rows[0].party.members[0].name
 const users = await API.user.info({handles: [handle]})
 //                                           ^-- Type 'string | undefined' is not assignable to type 'Handle'
 ```
-This snippet won't compile. But if we use `string` instead of `Handle` it'll successfully compile and make request to codeforces API
+This snippet won't compile. But if we use `string` instead of `Handle` it'll successfully compile and make request to codeforces API.
 
 ## Authorization
 All methods except `user.friends` allow anauthorized access, but if you want, you can use authorization:
@@ -156,7 +156,7 @@ const friendList = async () => {
 ```
 
 ## Example
-This example prints users who took part in ALL contestsIds and solved at least one problem in each contest ordered by sum of taken places
+This example prints users who took part in ALL contestsIds and solved at least one problem in each contest ordered by sum of taken places:
 
 ```typescript
 // Import Types and API from sdk
@@ -241,24 +241,24 @@ const mergeContestStandings = async (contestIds: Array<Types.ContestId>) => {
 }
 ```
 
-You can find more examples [here](https://github.com/Igorjan94/codeforces-projects)
+You can find more examples [here](https://github.com/Igorjan94/codeforces-projects).
 
 ## Exceptions
 
-Every method can throw error. It throws `CodeforcesError` instance if sdk got request from codeforces and `Error` otherwise (e.g. network timeout)
+Every method can throw error. It throws `CodeforcesError` instance if sdk got request from codeforces and `Error` otherwise (e.g. network timeout).
 
 ## Extra
 
-If you want to output colorfull standings and handles in console, you can install [cli-color](https://www.npmjs.com/package/cli-color) and then use `toString({withColor: true})` with `Party`, `ProblemResult` or `User`
+If you want to output colorfull standings and handles in console, you can install [cli-color](https://www.npmjs.com/package/cli-color) and then use `toString({withColor: true})` with `Party`, `ProblemResult` or `User`.
 
-[Example](https://github.com/Igorjan94/codeforces-projects/blob/master/src/standings.ts)
+[Example](https://github.com/Igorjan94/codeforces-projects/blob/master/src/standings.ts).
 
 ![ Image ](https://raw.githubusercontent.com/Igorjan94/codeforces-projects/master/data/standings.png?token=GHSAT0AAAAAAB2MP7ER25HE3NHQPVJD2K6QY6OHJKQ)
 
 ## Bugs
-If you find any bugs (I believe they exist!) feel free to create issue on github or notify anywhere you find me by my nickname `Igorjan94`
+If you find any bugs (I believe they exist!) feel free to create issue on github or notify anywhere you find me by my nickname `Igorjan94`.
 
-## Plans
+## Future plans
 
 * Implement unofficial methods like
     * Get submission text
