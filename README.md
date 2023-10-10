@@ -45,7 +45,8 @@ This function has one object argument of type `API.contest.StandingsOptions` whi
 ```typescript
 {
     contestId: ContestId
-    from: number
+    asManager?: boolean,
+    from?: number
     count?: number
     handles?: Handle | Array<Handle>
     room?: number
@@ -143,7 +144,7 @@ const friendList = async () => {
     init.readDefaultOptionsFromFile('<path>')
 
     // Or use CODEFORCES_KEY, CODEFORCES_SECRET and CODEFORCES_LANG env options, for example
-    // CODEFORCES_LANG=en node out/scj/src/index.js
+    // CODEFORCES_LANG=en node out/cjs/src/index.js
 
     const handles = await API.user.friends()
     console.log(handles)

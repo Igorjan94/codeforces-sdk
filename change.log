@@ -1,0 +1,4 @@
+# v0.0.2
+
+* added `asManager` option;
+* `from` option in `contest.stangins' is now optional.

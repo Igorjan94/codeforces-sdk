@@ -10,6 +10,7 @@ import { apiRequest } from '../utils/api-request'
 
 export type HacksOptions = {
     contestId: ContestId
+    asManager?: boolean
 }
 
 export const hacks = async (options: HacksOptions) => {
@@ -37,7 +38,8 @@ export const ratingChanges = async (options: RatingChangesOptions) => {
 
 export type StandingsOptions = {
     contestId: ContestId
-    from: number
+    asManager?: boolean
+    from?: number
     count?: number
     handles?: Handle | Array<Handle>
     room?: number
@@ -54,6 +56,7 @@ export const standings = async (options: StandingsOptions) => {
 
 export type StatusOptions = {
     contestId: ContestId
+    asManager?: boolean
     handle?: Handle
     from?: number
     count?: number
