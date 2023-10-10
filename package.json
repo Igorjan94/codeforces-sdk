@@ -1,7 +1,7 @@
 {
   "name": "codeforces-sdk",
   "plan": "web",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "SDK for codeforces.com",
   "keywords": ["codeforces", "sdk"],
   "main": "./out/esm/src/index.js",

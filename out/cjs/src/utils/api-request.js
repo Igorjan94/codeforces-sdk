@@ -84,7 +84,6 @@ const rawApiRequest = async (method, options = {}, extra = { ensureAuth: false }
         reqOptions.apiKey = defaultOptions.key;
         const searchParams = Object.entries(reqOptions).sort((a, b) => a < b ? -1 : a > b ? 1 : 0).map(([k, v]) => `${k}=${v}`).join('&');
         const hash = `${rand}/${method}?${searchParams}#${defaultOptions.secret}`;
-        console.log(hash);
         reqOptions.apiSig = `${rand}${getHash(hash)}`;
         debug('Request is authorized');
     }
