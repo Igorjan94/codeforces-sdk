@@ -1,5 +1,18 @@
 import { CodeforcesObject, CODEFORCES_URL, Handle } from './common'
 
+export const COLORS = [
+    'black',
+	'gray',
+	'green',
+	'cyan',
+	'blue',
+	'violet',
+	'orange',
+	'red',
+	'legendary' 
+] as const
+export type Color = (typeof COLORS)[number]
+
 let clc
 
 try {
@@ -35,7 +48,7 @@ export class User extends CodeforcesObject<User> {
     /** User's title photo URL */
     titlePhoto: string
 
-    getColor() {
+    getColor(): Color {
         if (this.rating === undefined)
             return 'black'
         if (this.rating < 1200)

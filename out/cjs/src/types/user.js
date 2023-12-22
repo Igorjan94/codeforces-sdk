@@ -1,7 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.User = exports.COLORS = void 0;
 const common_1 = require("./common");
+exports.COLORS = [
+    'black',
+    'gray',
+    'green',
+    'cyan',
+    'blue',
+    'violet',
+    'orange',
+    'red',
+    'legendary'
+];
 let clc;
 try {
     clc = require('cli-color');

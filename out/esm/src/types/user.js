@@ -1,4 +1,15 @@
 import { CodeforcesObject, CODEFORCES_URL } from './common';
+export const COLORS = [
+    'black',
+    'gray',
+    'green',
+    'cyan',
+    'blue',
+    'violet',
+    'orange',
+    'red',
+    'legendary'
+];
 let clc;
 try {
     clc = require('cli-color');

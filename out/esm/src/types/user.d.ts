@@ -1,4 +1,6 @@
 import { CodeforcesObject, Handle } from './common';
+export declare const COLORS: readonly ["black", "gray", "green", "cyan", "blue", "violet", "orange", "red", "legendary"];
+export type Color = (typeof COLORS)[number];
 export declare class User extends CodeforcesObject<User> {
     handle: Handle;
     email?: string;
@@ -27,7 +29,7 @@ export declare class User extends CodeforcesObject<User> {
     avatar: string;
     /** User's title photo URL */
     titlePhoto: string;
-    getColor(): "black" | "gray" | "green" | "cyan" | "blue" | "violet" | "orange" | "red" | "legendary";
+    getColor(): Color;
     getColoredHandle(): any;
     getClass(): string;
     getStyledLink(text?: string): string;
